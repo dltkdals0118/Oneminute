@@ -37,6 +37,10 @@ function tryMatch(socketId) {
   }
 }
 
+app.get('/', (req, res) => {
+  res.send('OneMinute 실시간 매칭 서버가 정상 동작 중입니다!');
+});
+
 const PORT = process.env.PORT || 4000;
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Matching server running on port ${PORT}`);

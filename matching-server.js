@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const { v4: uuidv4 } = require('uuid');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
@@ -40,6 +41,8 @@ function tryMatch(socketId) {
 app.get('/', (req, res) => {
   res.send('OneMinute 실시간 매칭 서버가 정상 동작 중입니다!');
 });
+
+app.use('/web', express.static(path.join(__dirname, 'public')));
 
 const PORT = process.env.PORT || 4000;
 server.listen(PORT, '0.0.0.0', () => {
